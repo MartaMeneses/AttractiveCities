@@ -1,0 +1,32 @@
+<div class="px-5 pt-5">
+    <div class="flex flex-row w-full">
+      <div class="flex flex-row w-full items-center justify-center mt-2">
+        <h1 class="font-medium p-0 m-0">GENERAL REPORT</h1>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6 p-6">
+      <mat-card class="flex flex-col gap-5 items-center align-middle justify-center p-0 m-0 w-full rounded-[12px] shadow-none outline outline-1 outline-gray-300">
+        <div class="flex justify-center align-middle items-center bg-gray-100 rounded-t-[12px] p-4 py-6 w-full md:h-full h-32">
+            <p class="p-0 m-0 text-5xl md:text-5xl font-black text-thuas-groen-base"></p>
+        </div>
+        <div class="px-5">
+                <h2 class="font-medium text-black/60"></h2>
+            </div>
+    </mat-card>
+  </div>
+    <div class="grid mt-2 p-7">
+      <mat-card class="w-full h-full">
+        <div class="flex justify-center align-middle items-center bg-white rounded-t-[12px] p-2 w-full h-full">
+              <apx-chart
+              [series]="comparativa.series"
+              [fill]="comparativa.fill"
+              [chart]="comparativa.chart"
+              [xaxis]="comparativa.xaxis"
+              [title]="comparativa.title"
+              [plotOptions] = "comparativa.plotOptions"
+            ></apx-chart>    
+          </div>
+      </mat-card> 
+    </div>
+
+</div>

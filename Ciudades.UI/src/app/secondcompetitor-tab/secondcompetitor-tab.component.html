@@ -1,0 +1,29 @@
+<div class="px-5 pt-5">
+    <div class="flex flex-row w-full">
+      <div class="flex flex-row w-full items-center justify-center mt-2">
+        <h1 class="font-medium p-0 m-0">SECOND COMPETITOR</h1>
+        <ng-container *ngFor="let c of flow">
+          <h2 class="font-medium p-0 m-0">{{c.cityName}}</h2>
+      </ng-container>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6 p-6">
+
+  </div>
+    <div class="grid mt-2 p-7">
+      <mat-card class="w-full h-full">
+        <div class="flex justify-center align-middle items-center bg-white rounded-t-[12px] p-2 w-full h-full">
+              <apx-chart
+              [series]="comparativa.series"
+              [fill]="comparativa.fill"
+              [chart]="comparativa.chart"
+              [xaxis]="comparativa.xaxis"
+              [title]="comparativa.title"
+              [plotOptions] = "comparativa.plotOptions"
+            ></apx-chart>    
+          </div>
+      </mat-card> 
+    </div>
+  
+  </div>
+  

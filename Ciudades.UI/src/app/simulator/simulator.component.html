@@ -1,0 +1,107 @@
+<div class="simulator">
+  <h1 class="simulator__title">Simulator</h1>
+  <mat-card class="h-full rounded-[12px] shadow-none outline outline-1 outline-gray-200 mx-5 bg-white m-3">
+    <h2 class="mb-1 p-3 text-center font-medium">
+      <tr *ngFor="let city of cities" class="text-center">
+          <td class="text-gray-500">Name: {{ city.cityName }}</td>
+      </tr>
+    </h2>
+  </mat-card>
+  <table class="simulator__table">
+    <thead>
+      <tr>
+        <th class="simulator__table-header">History</th>
+        <th class="simulator__table-header">Governance</th>
+        <th class="simulator__table-header">Reputation</th>
+        <th class="simulator__table-header">Space</th>
+        <th class="simulator__table-header">Climate</th>
+        <th class="simulator__table-header">GeoRisk</th>
+        <th class="simulator__table-header">GeoEconomics</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let city of cities" class="simulator__table-row">
+        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.history" (blur)="onAttributeChange(city)" /></td>
+        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.governance" (blur)="onAttributeChange(city)" /></td>
+        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.reputation" (blur)="onAttributeChange(city)" /></td>
+        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.space" (blur)="onAttributeChange(city)" /></td>
+        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.climate" (blur)="onAttributeChange(city)" /></td>
+        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.georisk" (blur)="onAttributeChange(city)" /></td>
+        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.geoeconomics" (blur)="onAttributeChange(city)" /></td>
+      </tr>
+    </tbody>
+    <thead>
+      <tr>
+        <th class="simulator__table-header">Gastronomy</th>
+        <th class="simulator__table-header">Branding</th>
+        <th class="simulator__table-header">Social Activity</th>
+        <th class="simulator__table-header">Social Expat</th>
+        <th class="simulator__table-header">Ethics</th>
+        <th class="simulator__table-header">Equality</th>
+        <th class="simulator__table-header">Human Capital</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let city of cities" class="simulator__table-row">
+        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.gastronomy" (blur)="onAttributeChange(city)" /></td>
+        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.branding" (blur)="onAttributeChange(city)" /></td>
+        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.social_activity" (blur)="onAttributeChange(city)" /></td>
+        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.expat_exp" (blur)="onAttributeChange(city)" /></td>
+        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.ethics" (blur)="onAttributeChange(city)" /></td>
+        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.equality" (blur)="onAttributeChange(city)" /></td>
+        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.human_cap" (blur)="onAttributeChange(city)" /></td>
+      </tr>
+    </tbody>
+    <thead>
+      <tr>
+        <th class="simulator__table-header">Smart Cities</th>
+        <th class="simulator__table-header">Innovation</th>
+        <th class="simulator__table-header">Digital Government</th>
+        <th class="simulator__table-header">Education</th>
+        <th class="simulator__table-header">Employability</th>
+        <th class="simulator__table-header">Connection</th>
+        <th class="simulator__table-header">Health</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let city of cities" class="simulator__table-row">
+        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.smartcities" (blur)="onAttributeChange(city)" /></td>
+        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.innovation" (blur)="onAttributeChange(city)" /></td>
+        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.digitalGovernment" (blur)="onAttributeChange(city)" /></td>
+        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.education" (blur)="onAttributeChange(city)" /></td>
+        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.employability" (blur)="onAttributeChange(city)" /></td>
+        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.connection" (blur)="onAttributeChange(city)" /></td>
+        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.health" (blur)="onAttributeChange(city)" /></td>
+     </tr>
+    </tbody>
+    <thead>
+      <tr>
+        <th class="simulator__table-header">Sustainability</th>
+        <th class="simulator__table-header">Culture/Tourism</th>
+        <th class="simulator__table-header">Urban Planning</th>
+        <th class="simulator__table-header">Urban Mobility</th>
+        <th class="simulator__table-header">Safety</th>
+        <th class="simulator__table-header">Income</th>
+        <th class="simulator__table-header">Cost of Life</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let city of cities" class="simulator__table-row">
+        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.sustainability" (blur)="onAttributeChange(city)" /></td>
+        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.tourism" (blur)="onAttributeChange(city)" /></td>
+        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.urbanMobility" (blur)="onAttributeChange(city)" /></td>
+        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.urbanPlanning" (blur)="onAttributeChange(city)" /></td>
+        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.safety" (blur)="onAttributeChange(city)" /></td>
+        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.netRealIncome" (blur)="onAttributeChange(city)" /></td>
+        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.costofLife" (blur)="onAttributeChange(city)" /></td>
+      </tr>
+    </tbody>
+  </table>
+  <mat-card class="m-3 h-full rounded-[12px] shadow-none outline outline-1 outline-gray-200 mx-5 bg-white">
+  <h2 class="mb-1 p-3 text-center font-medium">
+  <tr *ngFor="let city of cities" class="text-center">
+      <td class="text-gray-500">Ranking Position: {{ getOverallScore(city) }}</td>
+  </tr>
+  </h2>
+</mat-card>
+</div>

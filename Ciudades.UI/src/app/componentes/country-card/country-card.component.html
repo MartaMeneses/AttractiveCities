@@ -1,0 +1,26 @@
+<mat-card class="h-full rounded-[12px] shadow-none outline outline-1 outline-gray-200 mx-5 bg-white">
+    <div class="absolute w-full bottom-2 left-0">
+        <div class="relative w-full px-3 pb-1">
+            <div class="flex w-full justify-end">
+                <button mat-flat-button class="bg-[#1976d2] text-white w-full uppercase text-[13px]" (click)="navigate(country.countryID)">
+                        Go to Analysis
+                </button>
+            </div>
+        </div>  
+    </div>
+
+    <div class="mb-14 cardC">
+        <div class="flex gap-5 items-center">
+            <div>
+                <div class="w-10 h-10 rounded-full bg-gray-100 ring ring-2 ring-offset-2 ring-gray-200">
+                    <img class="w-10 h-10 rounded-full ring ring-2 ring-offset-2 ring-gray-200 object-cover" src="../../../assets/img/Mapa.jpg">
+                </div>
+            </div>
+            <div class="flex flex-col justify-center align-middle">
+                <div>
+                    <h3 class="mb-1 p-0 leading-6 font-medium">{{ country.countryName }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-card>

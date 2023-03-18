@@ -1,0 +1,26 @@
+<div class="mx-6 p-6">
+    <h1 class="font-medium mx-6">All Countries</h1>
+      <div class="flex flex-row items-center gap-4">
+        <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Search</label>
+        <div class="relative w-full">
+          <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+              <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          </div>
+          <input [(ngModel)]="searchTerm" id="default-search" class="block p-4 pl-10 w-full text-sm text-gray-900 bg-white rounded-[12px] border border-gray-300 focus:outline-2 focus:outline-thuas-groen-base focus:border-none" placeholder="Search for countries">
+          <button *ngIf="searchTerm" class="absolute right-2 bottom-1.5" matSuffix mat-icon-button aria-label="Clear" (click)="searchTerm=''">
+            <mat-icon>close</mat-icon>
+        </button>
+        </div>
+      </div>
+  
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 mt-5 mb-5 sm:auto-rows-fr sm:auto-cols-fr"
+      *ngIf="(countryList | classes : searchTerm).length != 0">
+      <ng-container *ngFor="let country of countryList | classes: searchTerm">
+          <app-country-card [country]="country"></app-country-card>
+      </ng-container>
+      </div>
+  
+    <div class="flex w-full my-5 justify-center" *ngIf="(countryList | classes : searchTerm).length === 0">
+      <h1 class="text-center">No results for "{{searchTerm}}" 😕</h1>
+    </div>
+  </div>
