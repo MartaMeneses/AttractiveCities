@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class ProfileComponent implements OnInit{
   @Input() cityList !: City[];
   slug !: number;
-  city !: City[];
+  city : City[] = [];
   cityAcronym : string = "City"
 
   constructor(private cityService: CityService, private route: ActivatedRoute, private router : Router){

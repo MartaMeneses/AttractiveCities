@@ -1,21 +1,23 @@
 <div class="px-5 pt-5">
-  <div class="flex flex-row w-full">
     <div class="flex flex-row w-full items-center justify-center mt-2">
       <h1 class="font-medium p-0 m-0">FIRST COMPETITOR</h1>
-      <ng-container *ngFor="let c of flow">
-        <h2 class="font-medium p-0 m-0"></h2>
+    </div>
+    <div class="flex flex-row w-full items-center justify-center mt-2">
+    <ng-container *ngFor="let c of competitorsName">
+        <h2 class="font-medium p-0 m-0">{{c}}</h2>
     </ng-container>
     </div>
-  </div>
   <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6 p-6">
-    <mat-card class="flex flex-col gap-5 items-center align-middle justify-center p-0 m-0 w-full rounded-[12px] shadow-none outline outline-1 outline-gray-300">
-      <div class="flex justify-center align-middle items-center bg-gray-100 rounded-t-[12px] p-4 py-6 w-full md:h-full h-32">
-          <p class="p-0 m-0 text-5xl md:text-5xl font-black text-thuas-groen-base"></p>
-      </div>
-      <div class="px-5">
-              <h2 class="font-medium text-black/60"></h2>
+    <ng-container *ngFor="let card of keyCards">
+      <mat-card class="flex flex-col gap-5 items-center align-middle justify-center p-0 m-0 w-full rounded-[12px] shadow-none outline outline-1 outline-gray-300">
+          <div class="flex justify-center align-middle items-center bg-gray-100 rounded-t-[12px] p-4 py-6 w-full md:h-full h-32">
+              <p class="p-0 m-0 text-3xl md:text-3xl font-black text-thuas-groen-base">{{card.metric}}</p>
           </div>
-    </mat-card>
+          <div class="px-5">
+            <h2 class="font-small text-white/80">{{card.label}}</h2>
+          </div>
+      </mat-card>
+  </ng-container>
   </div>
   <div class="grid mt-2 p-7">
     <mat-card class="w-full h-full">

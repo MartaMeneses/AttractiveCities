@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, elementAt } from 'rxjs';
 
 export interface KeyCard {
-  metric :number,
+  metric :string,
   label : string
 }
 
@@ -40,13 +40,9 @@ export class FirstcompetitorTabComponent {
 
   targetcity : number[] = []; //current cities properties
   competitor : number[] = []; //cities properties of the competitor
-
+  competitorsName : string[] = []; //list of competitors
   //Cards
-  keyCardIdentity !: KeyCard;
-  //keyCardDynamism !: KeyCard;
-  //keyCardStrategy !: KeyCard;
-  //keyCardServices !: KeyCard;
-  //keyCardCostofLife !: KeyCard;
+  keyCards: KeyCard[] = [];
 
   constructor(private cityService: CityService, private route: ActivatedRoute){}
 
@@ -77,6 +73,7 @@ this.fetchCaracteristics();
       subscribe((result: City[]) => {
         this.flow = result;
         let competitorValues = Object.values(result[0]);
+        this.competitorsName[0] = competitorValues[1];
         this.competitor = competitorValues.slice(3);
         
          //CREATE GRAPH
@@ -130,23 +127,15 @@ createGraph():void{
     const endIndex = [8,12,15,25,27];
     const labels = ["Identity", "Dynamism", "Strategy", "Services", "Cost of Life"]
 
-    let sum = this.competitor.slice(startIndex[0], endIndex[0] + 1).reduce((a, b) => a + b, 0);
-    let average = sum / (endIndex[0]- startIndex[0] + 1);
-    this.keyCardIdentity = { metric: average, label: labels[0] };
-    //console.log("Average", average);
-    //sum = this.competitor.slice(startIndex[1], endIndex[1] + 1).reduce((a, b) => a + b, 0);
-    //average = sum / (endIndex[1] - startIndex[1] + 1);
-    //this.keyCardDynamism = { metric: average, label: labels[1] };
-    //sum = this.competitor.slice(startIndex[2], endIndex[2] + 1).reduce((a, b) => a + b, 0);
-    //average = sum / (endIndex[2] - startIndex[2] + 1);
-    //this.keyCardStrategy = { metric: average, label: labels[2] };
-    //sum = this.competitor.slice(startIndex[3], endIndex[3] + 1).reduce((a, b) => a + b, 0);
-    //average = sum / (endIndex[3] - startIndex[3] + 1);
-    //this.keyCardServices = { metric: average, label: labels[3] };
-    //sum = this.competitor.slice(startIndex[4], endIndex[4] + 1).reduce((a, b) => a + b, 0);
-    //average = sum / (endIndex[4] - startIndex[4] + 1);
-    //this.keyCardCostofLife = { metric: average, label: labels[4] };
- 
+    for (let i = 0; i < 5; i++) {
+      let sum1: number= this.competitor.slice(startIndex[i], endIndex[i] + 1).reduce((a, b) => a + b, 0);
+      let sum2: number= this.targetcity.slice(startIndex[i], endIndex[i] + 1).reduce((a, b) => a + b, 0);
+      let average1: number = (sum1 / (endIndex[i] - startIndex[i] + 1));
+      let average2: number = (sum2 / (endIndex[i] - startIndex[i] + 1));
+      let metrica =  (average2 -average1);
+      let metric = metrica.toFixed(2);
+      this.keyCards[i] = { metric: metric, label: labels[i] };
+    }
   }
 
 }
