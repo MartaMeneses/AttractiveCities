@@ -18,24 +18,24 @@ public class City
     public double? Geoeconomics {get; set;}
     public double? Gastronomy {get; set;}
     public double? Branding {get; set;}
-    public double? Social_Activity {get; set;}
-    public double? Expat_exp {get; set;}
+    public double? SocialActivity {get; set;}
+    public double? ExpatExp {get; set;}
     public double? Ethics {get; set;}
     public double? Equality {get; set;}
-    public double? Human_cap {get; set;}
+    public double? HumanCap {get; set;}
     public double? Smartcities {get; set;}
     public double? Innovation {get; set;}
-    public double? Digital_Government {get; set;}
+    public double? DigitalGovernment {get; set;}
     public double? Education {get; set;}
     public double? Employability {get; set;}
     public double? Connection {get; set;}
     public double? Health {get; set;}
     public double? Sustainability {get; set;}
     public double? Tourism {get; set;}
-    public double? Urban_Mobility {get; set;}
-    public double? Urban_Planning {get; set;}
+    public double? UrbanMobility {get; set;}
+    public double? UrbanPlanning {get; set;}
     public double? Safety {get; set;}
-    public double? Net_Real_Income {get; set;}
-    public double? Cost_of_Life {get; set;}
+    public double? NetRealIncome {get; set;}
+    public double? CostofLife {get; set;}
     
 }

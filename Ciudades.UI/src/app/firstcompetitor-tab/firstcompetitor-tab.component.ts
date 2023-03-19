@@ -111,7 +111,14 @@ createGraph():void{
       }
     },
     title: {
-      text: "Comparative Graph with the First Competitor"
+      text: 'Comparison of characteristics',
+      align: 'center',
+      style: {
+        fontSize: '20px',
+        fontWeight: 'bold',
+        fontFamily: 'Arial',
+        color: '#333'
+      }
     },
     xaxis: {
       categories: ["History", "Governance", "Reputation", "Space", "Climate", "Georisk", "Geoeconomics",

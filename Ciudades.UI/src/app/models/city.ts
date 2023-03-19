@@ -12,11 +12,11 @@ export class City{
     geoeconomics = 0;
     gastronomy = 0;
     branding = 0;
-    social_activity = 0;
-    expat_exp = 0;
+    socialActivity = 0;
+    expatExp = 0;
     ethics = 0;
     equality = 0;
-    human_cap = 0;
+    humanCap = 0;
     smartcities = 0;
     innovation = 0;
     digitalGovernment = 0;

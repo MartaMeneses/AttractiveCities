@@ -19,6 +19,7 @@ export class SeleccionCiudadesComponent implements OnInit, AfterViewInit{
   // Table vars
     dataSource$ !: any;
     dataSource !: any;
+    countryAcronym : string = "Country"
 
     displayedColumns = ['name'];
 

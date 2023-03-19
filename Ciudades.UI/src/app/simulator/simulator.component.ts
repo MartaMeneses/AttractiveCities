@@ -34,11 +34,11 @@ export class SimulatorComponent  implements OnInit {
     city.geoeconomics = Number(city.geoeconomics.toFixed(1));
     city.gastronomy = Number(city.gastronomy.toFixed(1));
     city.branding = Number(city.branding.toFixed(1)); // Round to 1 decimal place
-    city.social_activity = Number(city.social_activity.toFixed(1)); // Round to 1 decimal place
-    city.expat_exp = Number(city.expat_exp.toFixed(1));
+    city.socialActivity = Number(city.socialActivity.toFixed(1)); // Round to 1 decimal place
+    city.expatExp = Number(city.expatExp.toFixed(1));
     city.ethics = Number(city.ethics.toFixed(1));
     city.equality = Number(city.equality.toFixed(1));
-    city.human_cap = Number(city.human_cap.toFixed(1)); // Round to 1 decimal place
+    city.humanCap = Number(city.humanCap.toFixed(1)); // Round to 1 decimal place
     city.smartcities = Number(city.smartcities.toFixed(1));
     city.innovation = Number(city.innovation.toFixed(1));
     city.digitalGovernment = Number(city.digitalGovernment.toFixed(1));
@@ -60,13 +60,12 @@ export class SimulatorComponent  implements OnInit {
     0.25*18465,  0.25*18465, 0.25*18465, 0.25*18465, 0.2*0.1387, 0.5*0.1387, 0.3*0.1387, 0.025, 0.025, 0.025, 0.025,
     0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.050, 0.050];
     const attributes = [city.history, city.governance, city.reputation, city.space, city.climate, city.georisk, city.geoeconomics, city.gastronomy, city.branding,
-      city.social_activity, city.expat_exp, city.ethics, city.equality, city.human_cap, city.smartcities, city.innovation, city.digitalGovernment, city.education,
+      city.socialActivity, city.expatExp, city.ethics, city.equality, city.humanCap, city.smartcities, city.innovation, city.digitalGovernment, city.education,
       city.employability, city.connection, city.health, city.sustainability, city.tourism, city.urbanMobility, city.urbanPlanning, city.safety, city.netRealIncome, city.costofLife];
     let result = 0;
     for (let i = 0; i < weights.length; i++) {
       result += weights[i] * attributes[i];
     }
-    console.log("social",city.social_activity);
     result = Number(result.toFixed(1)); // Round to 1 decimal place
     return result;
 }
