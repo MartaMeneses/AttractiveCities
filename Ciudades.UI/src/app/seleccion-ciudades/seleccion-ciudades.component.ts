@@ -20,7 +20,6 @@ export class SeleccionCiudadesComponent implements OnInit, AfterViewInit{
     dataSource$ !: any;
     dataSource !: any;
     countryAcronym : string = "Country"
-
     displayedColumns = ['name'];
 
     constructor(private cityService :CityService, private route: ActivatedRoute, private router : Router) { }

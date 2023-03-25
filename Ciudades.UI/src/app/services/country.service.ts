@@ -12,8 +12,12 @@ export class CountryService {
   constructor(private http: HttpClient) { }
 
   public getCountries() : Observable<Country[]> {
-
     return this.http.get<Country[]>(`${environment.apiUrl}/Country`);
-
+  }
+  public getRegion(insertValue : string) : Observable<Country[]> {
+    return this.http.get<Country[]>(`${environment.apiUrl}/Country/${insertValue}`);
+  }
+  public getCountriesRegion(insertValue : number) : Observable<Country[]>{
+    return this.http.get<Country[]>(`${environment.apiUrl}/GetCountriesRegion/${insertValue}`);
   }
 }

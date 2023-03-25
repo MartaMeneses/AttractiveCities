@@ -3,18 +3,16 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Ciudades.Data;
 
-namespace Ciudades.Controllers {
+namespace Ciudades.Controllers{
     [ApiController]
-    [Route ("Continent")]
+    [Route("Region")]
 
-        public class ContinentController : ControllerBase
+    public class RegionController: ControllerBase
     {   
         private readonly DataContext _context;
-        public ContinentController(DataContext context)
+        public RegionController(DataContext context)
         {
             _context = context;
         }
     }
-
-
 }

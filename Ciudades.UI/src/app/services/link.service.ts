@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { City } from '../models/city';
 
 @Injectable({
   providedIn: 'root'
@@ -7,18 +8,13 @@ import { BehaviorSubject } from 'rxjs';
 
 export class LinkService {
 
-  private selectedAssignmentViaButton = new BehaviorSubject<number>(0);
-  private selectedCourseViaButton = new BehaviorSubject<string>('');
+  private selectedReportViaButton = new BehaviorSubject<City[]>([]);
 
   public currentPageName = new BehaviorSubject<string>('');
 
-  emitAssignmentEvent(assignmentName: number){
-    this.selectedAssignmentViaButton.next(assignmentName)
+  emitReportEvent(cityList: City[]){
+    this.selectedReportViaButton.next(cityList)
   }
-
-  assignmentEventListner(){
-    return this.selectedAssignmentViaButton.asObservable();
-  } 
 
 /*
   emitCourseEvent(courseName: string){

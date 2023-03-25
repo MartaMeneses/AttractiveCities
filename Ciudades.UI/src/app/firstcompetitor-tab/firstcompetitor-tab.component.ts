@@ -7,8 +7,10 @@ import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, elementAt } from 'rxjs';
 
 export interface KeyCard {
+  colorFont: string,
   metric :string,
-  label : string
+  label : string,
+  icon : string
 }
 
 export type ChartOptions = {
@@ -89,7 +91,7 @@ createGraph():void{
   this.comparativa = {
     series: [
       {
-        name: "TAREGT CITY",
+        name: "TARGET CITY",
         data: this.targetcity
       },
       {
@@ -123,25 +125,37 @@ createGraph():void{
     xaxis: {
       categories: ["History", "Governance", "Reputation", "Space", "Climate", "Georisk", "Geoeconomics",
     "Gastronomy", "Branding", "Social Activity", "Expat", "Ethics", "Equality", "Human Capital", "Smart Cities Plan",
-    "Innovation", "Digital Government", "Education", "Employability", "Connection", "Health", "Sustainability",
-  "Culture & Tourism", "Urban Mobility", "Urban Planning", "Safety", "Income", "Cost of Life"]
+    "Innovation", "Digital Government", "Education", "Employability", "Connectivity", "Health/Social Services", "Sustainability",
+  "Culture & Tourism", "Urban Mobility", "Urban Planning", "Safety", "Income", "Net Purchase Power"]
     }
   };
   }
 
   createCards(){
-    const startIndex = [0,9,13,16,26];
+    const startIndex = [0,9,13,16,27];
     const endIndex = [8,12,15,25,27];
-    const labels = ["Identity", "Dynamism", "Strategy", "Services", "Cost of Life"]
-
+    const labels = ["Identity", "Dynamism", "Strategy", "Services", "Net Purchase Power"]
+    let color = "";
+    let icono = "";
     for (let i = 0; i < 5; i++) {
       let sum1: number= this.competitor.slice(startIndex[i], endIndex[i] + 1).reduce((a, b) => a + b, 0);
       let sum2: number= this.targetcity.slice(startIndex[i], endIndex[i] + 1).reduce((a, b) => a + b, 0);
       let average1: number = (sum1 / (endIndex[i] - startIndex[i] + 1));
       let average2: number = (sum2 / (endIndex[i] - startIndex[i] + 1));
-      let metrica =  (average2 -average1);
+      let metrica =  (average2-average1);
       let metric = metrica.toFixed(2);
-      this.keyCards[i] = { metric: metric, label: labels[i] };
+      if(metrica < 0) {
+          color= "red",
+          icono= "error_circle"
+        }
+       else if(metrica == 0) {
+        color= "yellow",
+        icono= "help_circle"
+      } else if(metrica > 0) {
+        color= "green",
+        icono= "check_circle"
+      };
+      this.keyCards[i] = { metric: metric, label: labels[i], colorFont: color, icon:icono };
     }
   }
 

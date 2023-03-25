@@ -11,10 +11,12 @@
   <ng-container *ngFor="let card of keyCards">
     <mat-card class="flex flex-col gap-5 items-center align-middle justify-center p-0 m-0 w-full rounded-[12px] shadow-none outline outline-1 outline-gray-300">
         <div class="flex justify-center align-middle items-center bg-gray-100 rounded-t-[12px] p-4 py-6 w-full md:h-full h-32">
-            <p class="titulos p-0 m-0 text-3xl md:text-3xl font-black">{{card.metric}}</p>
+            <p class="{{card.colorFont}} p-0 m-0 text-3xl md:text-3xl font-black">{{card.metric}}</p>
         </div>
         <div class="px-5">
-          <h2 class="font-small text-white/80">{{card.label}}</h2>
+          <h2 class="font-small text-white/80">{{card.label}}
+            <mat-icon class="{{card.colorFont}}">{{card.icon}}</mat-icon>
+          </h2>
         </div>
     </mat-card>
 </ng-container>

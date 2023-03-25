@@ -9,7 +9,7 @@ namespace Ciudades.Data{
         public DbSet<Country> Country {get;set;}
         public DbSet<City> City {get;set;}
         public DbSet<Flow> Flow {get;set;}
-        public DbSet<Continent> Continent {get;set;}
+        public DbSet<Region> Region {get;set;}
         public DbSet<Type> Type {get;set;}
 
 

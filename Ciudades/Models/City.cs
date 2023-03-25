@@ -35,7 +35,7 @@ public class City
     public double? UrbanMobility {get; set;}
     public double? UrbanPlanning {get; set;}
     public double? Safety {get; set;}
-    public double? NetRealIncome {get; set;}
-    public double? CostofLife {get; set;}
+    public double? Income {get; set;}
+    public double? NetPurchasePower {get; set;}
     
 }
