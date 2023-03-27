@@ -29,6 +29,6 @@ export class City{
     urbanMobility = 0;
     urbanPlanning = 0;
     safety = 0;
-    netRealIncome = 0;
-    costofLife = 0;
+    income= 0;
+    netPurchasePower = 0;
 }

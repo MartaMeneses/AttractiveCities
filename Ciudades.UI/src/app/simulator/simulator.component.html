@@ -3,7 +3,7 @@
   <mat-card class="h-full rounded-[12px] shadow-none outline outline-1 outline-gray-200 mx-5 bg-white m-3">
     <h2 class="mb-1 p-3 text-center font-medium">
       <tr *ngFor="let city of cities" class="text-center">
-          <td class="text-gray-500">Name: {{ city.cityName }}</td>
+          <td class="text-gray-500">City name: {{ city.cityName }}</td>
       </tr>
     </h2>
   </mat-card>
@@ -21,13 +21,13 @@
     </thead>
     <tbody>
       <tr *ngFor="let city of cities" class="simulator__table-row">
-        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.history" (blur)="onAttributeChange(city)" /></td>
+        <td class="simulator__table-cell"><p>{{city.history}}</p></td>
         <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.governance" (blur)="onAttributeChange(city)" /></td>
         <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.reputation" (blur)="onAttributeChange(city)" /></td>
         <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.space" (blur)="onAttributeChange(city)" /></td>
-        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.climate" (blur)="onAttributeChange(city)" /></td>
-        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.georisk" (blur)="onAttributeChange(city)" /></td>
-        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.geoeconomics" (blur)="onAttributeChange(city)" /></td>
+        <td class="simulator__table-cell"><p>{{city.climate}}</p></td>
+        <td class="simulator__table-cell"><p>{{city.georisk}}</p></td>
+        <td class="simulator__table-cell"><p>{{city.geoeconomics}}</p></td>
       </tr>
     </tbody>
     <thead>
@@ -43,7 +43,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let city of cities" class="simulator__table-row">
-        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.gastronomy" (blur)="onAttributeChange(city)" /></td>
+        <td class="simulator__table-cell"><p>{{city.gastronomy}}</p></td>
         <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.branding" (blur)="onAttributeChange(city)" /></td>
         <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.socialActivity" (blur)="onAttributeChange(city)" /></td>
         <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.expatExp" (blur)="onAttributeChange(city)" /></td>
@@ -92,16 +92,34 @@
         <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.urbanMobility" (blur)="onAttributeChange(city)" /></td>
         <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.urbanPlanning" (blur)="onAttributeChange(city)" /></td>
         <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.safety" (blur)="onAttributeChange(city)" /></td>
-        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.netRealIncome" (blur)="onAttributeChange(city)" /></td>
-        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.costofLife" (blur)="onAttributeChange(city)" /></td>
+        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.income" (blur)="onAttributeChange(city)" /></td>
+        <td class="simulator__table-cell"><input type="number" [(ngModel)]="city.netPurchasePower" (blur)="onAttributeChange(city)" /></td>
       </tr>
     </tbody>
   </table>
   <mat-card class="m-3 h-full rounded-[12px] shadow-none outline outline-1 outline-gray-200 mx-5 bg-white">
   <h2 class="mb-1 p-3 text-center font-medium">
   <tr *ngFor="let city of cities" class="text-center">
-      <td class="text-gray-500">Ranking Position: {{ getOverallScore(city) }}</td>
+    <td class="text-gray-500">Overall Score {{city.cityName}}: {{ getOverallScore(city) }}</td>
   </tr>
   </h2>
 </mat-card>
+  <table class="simulator__table">
+  <thead>
+    <tr>
+      <th class="simulator__table-header">Overall Score Competitors</th>
+      <th class="simulator__table-header">Overall Score Competitor1</th>
+      <th class="simulator__table-header">Overall Score Competitor2</th>
+      <th class="simulator__table-header">Overall Score Competitor3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr  class="simulator__table-row">
+      <td class="simulator__table-cell">{{ competitors_score }}</td>
+        <td class="simulator__table-cell" *ngFor="let city of competitor1" class="text-center">{{ getOverallScore(city) }}</td>
+        <td class="simulator__table-cell"*ngFor="let city of competitor2"class="text-center">{{ getOverallScore(city) }}</td>
+        <td class="simulator__table-cell"*ngFor="let city of competitor3"class="text-center">{{ getOverallScore(city) }}</td>
+    </tr>
+  </tbody>
+</table>
 </div>

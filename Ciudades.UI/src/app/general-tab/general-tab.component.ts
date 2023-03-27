@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, elementAt } from 'rxjs';
 import { LinkService } from '../services/link.service';
 import { CountryService } from '../services/country.service';
+import { Country } from '../models/country';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -33,7 +34,7 @@ export class GeneralTabComponent implements OnInit{
   chart!: ChartComponent;
   public comparativa: Partial<ChartOptions> | any;
 
-  targetcity : number[] = []; //current cities properties
+  targetcity : string[] = []; //current cities properties
   competitor : number[] = []; //cities properties of the competitor
   competitorsName : string[] = []; //list of competitors
   competitors1Values : number[] =[];
@@ -41,6 +42,8 @@ export class GeneralTabComponent implements OnInit{
   competitors3Values : number[] =[];
   competitorsValues : number[] =[];
   competitorValues : number[] =[];
+  resultSum : number[] =[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+  resultMedia :number[] =[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
   buttonClicked: number =0;
   constructor(private cityService: CityService, private countryService: CountryService, private route: ActivatedRoute, private router : Router,private assService : LinkService){}
@@ -62,53 +65,91 @@ emitReport(city : City[]) {
     this.slug = route['slug']
   });
 
-
   this.cityService
   .getCity(this.slug).
   subscribe((result: City[]) => {
-    let resultValues : number[] =[]; 
+    let resultValues : string[] =[]; 
     resultValues = Object.values(result[0]);
     this.targetcity = resultValues.slice(3);
+    this.countryService
+    //TAKE THE REGION OF THE CITY
+    .getRegion(resultValues[2]).
+    subscribe((result: Country[]) => {
+      let resultValues : number[] =[]; 
+      resultValues = Object.values(result[0]);
+      this.countryService
+      //TAKE THE COUNTRIES IN THAT REGION
+        .getCountriesRegion(resultValues[2]).
+        subscribe((result: Country[]) => {
 
-    //TAKE DATA OF THE COMPETITORS NAMES
-    this.cityService
-    .getCompetitor(this.slug).
-    subscribe((result: Flow[]) => {
-      let competitors= Object.values(result[0]);
-      this.cityService
-      .getCity(competitors[1]).
-      subscribe((result: City[]) => {
-        let competitorValues = Object.values(result[0]);
-        this.competitorsName[0] = competitorValues[1];
-        this.competitors1Values = competitorValues.slice(3);
+          //FUNCION MEDIA
+          let countryValues;
+          let cityValues : number[] = [];
+          let contador = 0;
+
+          for (let i = 0; i < result.length; i++) {
+            countryValues = Object.values(result[i]);
+            this.cityService.
+            getCities(countryValues[0]).
+            subscribe((result1: City[]) => {
+              for (let j = 0; j < result1.length; j++) {
+                cityValues = Object.values(result1[j]); 
+                cityValues = cityValues.slice(3);
+                contador = contador +1;
+                for (let k = 0; k < cityValues.length; k++) {
+                  this.resultSum[k] = this.resultSum[k]  + cityValues[k];
+                //Se calcula la media
+                  if ( k== (cityValues.length -1) && j== (result1.length -1) &&i ==result.length -1){
+                    for (let x = 0; x < this.resultSum.length; x++) {
+                      this.resultMedia[x] = Math.round(this.resultSum[x]/contador);
+                    }
+                    this.competitor = this.resultMedia;
+                    console.log("MEDIA", this.competitor);
+                        //TAKE DATA OF THE COMPETITORS NAMES
+                    this.cityService
+                    .getCompetitor(this.slug).
+                    subscribe((result: Flow[]) => {
+                      let competitors= Object.values(result[0]);
+                      this.cityService
+                      .getCity(competitors[1]).
+                      subscribe((result: City[]) => {
+                        let competitorValues = Object.values(result[0]);
+                        this.competitorsName[0] = competitorValues[1];
+                        this.competitors1Values = competitorValues.slice(3);
+                      });
+                      this.cityService
+                      .getCity(competitors[2]).
+                      subscribe((result: City[]) => {
+                        let competitorValues = Object.values(result[0]);
+                        this.competitorsName[1] = competitorValues[1];
+                        this.competitors2Values = competitorValues.slice(3);
+                        
+                      });
+                      this.cityService
+                      .getCity(competitors[3]).
+                      subscribe((result: City[]) => {
+                        let competitorValues = Object.values(result[0]);
+                        this.competitorsName[2] = competitorValues[1];
+                        this.competitors3Values = competitorValues.slice(3);
+                        this.competitorsValues =sumLists(this.competitors1Values,this.competitors2Values,this.competitors3Values);
+                        console.log( this.competitorsValues);
+                      
+                        //CREATE GRAPH
+                        this.createGraph();
+                      });
+
+                    });
+                  }
+                }
+                console.log("SUMA", this.resultSum);
+              }
+            }
+            );
+          }
       });
-      this.cityService
-      .getCity(competitors[2]).
-      subscribe((result: City[]) => {
-        let competitorValues = Object.values(result[0]);
-        this.competitorsName[1] = competitorValues[1];
-        this.competitors2Values = competitorValues.slice(3);
-        
-      });
-      this.cityService
-      .getCity(competitors[3]).
-      subscribe((result: City[]) => {
-        let competitorValues = Object.values(result[0]);
-        this.competitorsName[2] = competitorValues[1];
-        this.competitors3Values = competitorValues.slice(3);
-        this.competitorsValues =sumLists(this.competitors1Values,this.competitors2Values,this.competitors3Values);
-        console.log( this.competitorsValues);
-      });
-      this.cityService
-      .getCity(179).
-      subscribe((result: City[]) => {
-        let competitorValues = Object.values(result[0]);
-        this.competitor = competitorValues.slice(3);
-         //CREATE GRAPH
-        this.createGraph();
-      } );
-    } );
-  } );
+    });
+
+  });
 
   function sumLists(list1: number[], list2: number[],  list3: number[]): number[] {
     let result: number[] = [];
@@ -119,6 +160,7 @@ emitReport(city : City[]) {
     }
     return result;
   }
+
   
 }
 
@@ -172,4 +214,8 @@ createGraph():void{
 
 }
 
+
+function value(value: City[]): void {
+  throw new Error('Function not implemented.');
+}
 
