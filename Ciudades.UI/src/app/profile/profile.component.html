@@ -39,17 +39,17 @@
     </div>
     <div class= "flex w-full h-full max-w-screen-xl px-5 md:px-10 text-black">
         <!--TABS-->
-            <mat-tab-group mat-stretch-tabs mat-align-tabs="center" class="flex w-full bg-white rounded-[12px] shadow-none outline outline-1 outline-thuas-grijs-base/30">
-                <mat-tab label="Overview" >
+            <mat-tab-group mat-stretch-tabs mat-align-tabs="center" class="flex w-full bg-thuas-grijs-base/100 rounded-[12px] shadow-none outline outline-1">
+                <mat-tab label="Overview Report">
                         <app-general-tab [cityList]="city"></app-general-tab>
                 </mat-tab>
-                <mat-tab label="Competitor 1">
+                <mat-tab label="Competitor 1 Report">
                    <app-firstcompetitor-tab [cityList]="city"></app-firstcompetitor-tab>            
                 </mat-tab>
-                <mat-tab label="Competitor 2">
+                <mat-tab label="Competitor 2 Report">
                    <app-secondcompetitor-tab [cityList]="city"></app-secondcompetitor-tab>             
                 </mat-tab>
-                <mat-tab label="Competitor 3">
+                <mat-tab label="Competitor 3 Report">
                     <app-thirdcompetitor-tab [cityList]="city"></app-thirdcompetitor-tab>
                 </mat-tab>
                 <mat-tab label="Article">
