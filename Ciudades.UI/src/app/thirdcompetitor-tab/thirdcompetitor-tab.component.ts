@@ -123,10 +123,10 @@ createGraph():void{
       }
     },
     xaxis: {
-      categories: ["History", "Governance", "Reputation", "Space", "Climate", "Georisk", "Geoeconomics",
-    "Gastronomy", "Branding", "Social Activity", "Expat", "Ethics", "Equality", "Human Capital", "Smart Cities Plan",
-    "Innovation", "Digital Government", "Education", "Employability", "Connectivity", "Health/Social Services", "Sustainability",
-  "Culture & Tourism", "Urban Mobility", "Urban Planning", "Safety", "Income", "Net Purchase Power"]
+      categories: ["I-History", "I-Governance", "I-Reputation", "I-Space", "I-Climate", "I-Georisk", "I-Geoeconomics",
+      "I-Gastronomy", "I-Branding", "D-Social Activity", "D-Expat", "D-Ethics", "D-Equality", "ST-Human Capital", "ST-Smart Cities Plan",
+      "ST-Innovation", "SE-Digital Government", "SE-Education", "SE-Employability", "SE-Connectivity", "SE-Health/Social Services", "SE-Sustainability",
+    "SE-Culture & Tourism", "SE-Urban Mobility", "SE-Urban Planning", "SE-Safety", "NPP-Income", "NPP-Net Purchase Power"]
     }
   };
   }
@@ -134,7 +134,7 @@ createGraph():void{
   createCards(){
     const startIndex = [0,9,13,16,27];
     const endIndex = [8,12,15,25,27];
-    const labels = ["Identity", "Dynamism", "Strategy", "Services", "Net Purchase Power"]
+    const labels = ["Identity (I)", "Dynamism (D)", "Strategy (ST)", "Services (SE)", "Net Purchase Power (NPP)"]
     let color = "";
     let icono = "";
     for (let i = 0; i < 5; i++) {

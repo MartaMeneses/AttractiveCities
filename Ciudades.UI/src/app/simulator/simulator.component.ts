@@ -23,6 +23,7 @@ export class SimulatorComponent  implements OnInit {
   competitor3 : City[] | undefined;
   competitors_score: number = 0;
   slug !: number;
+  competitorsName : string[] = []; //list of competitors
 
   constructor(private cityService: CityService, private route: ActivatedRoute, private router : Router){
   }
@@ -46,6 +47,7 @@ export class SimulatorComponent  implements OnInit {
         subscribe((result: City[]) => {
           this.competitor1 = result;
           let competitorValues = Object.values(result[0]);
+          this.competitorsName[0] = competitorValues[1];
           this.competitors1Values = competitorValues.slice(3);
         });
         this.cityService
@@ -53,6 +55,7 @@ export class SimulatorComponent  implements OnInit {
         subscribe((result: City[]) => {
           this.competitor2 = result;
           let competitorValues = Object.values(result[0]);
+          this.competitorsName[1] = competitorValues[1];
           this.competitors2Values = competitorValues.slice(3);
           
         });
@@ -61,6 +64,7 @@ export class SimulatorComponent  implements OnInit {
         subscribe((result: City[]) => {
           this.competitor3 = result;
           let competitorValues = Object.values(result[0]);
+          this.competitorsName[2] = competitorValues[1];
           this.competitors3Values = competitorValues.slice(3);
           this.competitorsValues =sumLists(this.competitors1Values,this.competitors2Values,this.competitors3Values);
           

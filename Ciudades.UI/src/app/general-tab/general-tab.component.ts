@@ -194,7 +194,7 @@ createGraph():void{
       }
     },
     title: {
-      text: "Comparative Graph with the overall scores of the 175 cities",
+      text: "Comparative Graph target city vs Competitors & Region",
       align: 'center',
       style: {
         fontSize: '20px',
